@@ -7,6 +7,8 @@ import com.beerus.utils.Mark;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
+import java.util.Date;
+
 /**
  * @Author Beerus
  * @Description 用户Action
@@ -27,8 +29,18 @@ public class UserAction extends ActionSupport {
     private String username;
     //标示是什么操作
     private String option;
+    //要转的日期
+    private Date dateStg;
     //用户数据层
     private UserService userBiz = new UserServiceImpl();
+
+    public Date getDateStg() {
+        return dateStg;
+    }
+
+    public void setDateStg(Date dateStg) {
+        this.dateStg = dateStg;
+    }
 
     public String getRepassword() {
         return repassword;
@@ -140,7 +152,7 @@ public class UserAction extends ActionSupport {
             if (!check_Login()) {
                 addFieldError("msg", "用户名或账号密码不能为空!");
             }
-        }else if("register".equals(option)){
+        } else if ("register".equals(option)) {
             //注册验证
             if (!check_Register()) {
                 addFieldError("msg", "请填写完整的注册信息!");

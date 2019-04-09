@@ -11,15 +11,13 @@
         <property name="connection.password">12345678</property>
         <!--配置辅助参数-->
         <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
+      <!--  <property name="format_sql">true</property>-->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <!--配置映射-->
-        <mapping resource="xml/District.hbm.xml"/>
-        <!--<mapping resource="xml/House.hbm.xml"/>
-        <mapping resource="xml/Street.hbm.xml"/>-->
         <mapping class="com.beerus.entity.Street"/>
         <mapping class="com.beerus.entity.House"/>
+        <mapping resource="xml/District.hbm.xml"/>
         <mapping resource="xml/Type.hbm.xml"/>
         <mapping resource="xml/Users.hbm.xml"/>
     </session-factory>

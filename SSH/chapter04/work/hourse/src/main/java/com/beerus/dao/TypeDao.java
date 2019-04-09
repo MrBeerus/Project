@@ -15,4 +15,5 @@ public interface TypeDao {
      * @return 类型集合
      */
     List<Type> listFindAll();
+
 }

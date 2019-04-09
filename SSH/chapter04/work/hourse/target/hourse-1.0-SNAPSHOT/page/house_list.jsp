@@ -32,12 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="navbar" class="wrap">
 
 	<dl class="search clearfix">
-		<form method="post" action="search.action" id='sform'>
+		<form method="post" action="findByConditionList.action" id='sform'>
 			<dt>
 				<ul>
 					<li class="bold">房屋信息</li>
 					<li>
-						标题：<input type="text" class="text" value='<s:property value="title"/>' name="title" />
+						标题：<input type="text" class="text" value='<s:property value="params.title"/>' name="params.title" />
 						<label class="ui-blue"><input type="button" onclick='doSearch()' name="search" value="搜索房屋" /></label>
 					</li>
 				</ul>
@@ -47,12 +47,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="first">
 						价格
 					</li>
+
 					<li>
-						<select name='price'>
-							<option value=''>不限</option>
-							<option value='0-100'>100元以下</option>
-							<option value='100-200'>100元—200元</option>
-							<option value='200-1000000'>200元以上</option>
+						<select name='params.price'>
+							<option value='0'>不限</option>
+							<option value='100'>100元以下</option>
+							<option value='200'>100元—200元</option>
+							<option value='201'>200元以上</option>
 						</select>
 					</li>
 				</ul>
@@ -61,12 +62,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul>
 					<li class="first">房屋位置</li>
 					<li>
-							<select name='street_id' id='street'>
-								<option value=''>不限</option>
-								<option value='1000'>知春路</option>
-								<option value='1001'>中关村大街</option>
-								<option value='1002'>学院路</option>
-								<option value='1003'>朝阳路</option>								
+							<select name='params.postion' id='street'>
+								<option value='0'>不限</option>
+								<option value='4401'>华强北街道</option>
+								<option value='4402'>深南中路</option>
+								<option value='4403'>福田街道</option>
+								<option value='4404'>沿河南路</option>
 							</select>
 					</li>
 				</ul>
@@ -75,12 +76,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul>
 					<li class="first">房型</li>
 					<li>
-							<select name='type_id'>
-								<option value=''>不限</option>
-								<option value='1000'>一室一厅</option>
-								<option value='1001'>一室两厅</option>
-								<option value='1002'>两室一厅</option>
-								<option value='1003'>两室两厅</option>								
+							<select name='params.type.id'>
+								<option value='0'>不限</option>
+                                <s:if test="typeList!=null">
+                                    <s:iterator value="typeList">
+                                        <option value='<s:property value="id"/>'><s:property value="name"/></option>
+                                    </s:iterator>
+                                </s:if>
 							</select>
 					</li>
 				</ul>
@@ -91,11 +93,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						面积
 					</li>
 					<li>
-							<select name='floorage'>
-								<option value=''>不限</option>
-								<option value='0-40'>40以下</option>
-								<option value='40-500'>40-500</option>
-								<option value='500-1000000'>500以上</option>							
+							<select name='params.floorage'>
+								<option value='0'>不限</option>
+								<option value='40'>40以下</option>
+								<option value='500'>40-500</option>
+								<option value='501'>500以上</option>
 							</select>
 					</li>
 				</ul>
@@ -105,11 +107,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="main wrap">
 	<table class="house-list">
-	<s:if test="houseList!=null">
-	<s:iterator value="houseList" status="status" >
+	<s:if test="page.pages!=null">
+	<s:iterator value="page.pages" status="status" >
 		<tr>
 			<td class="house-thumb"><span>
-				<s:url value="show.action" id="show">
+				<s:url value="showHouse.action" id="show">
 					<s:param name="id" value="id"></s:param>
 				</s:url>
 				<s:a href="%{show}"><img src="images/thumb_house.gif" /></s:a>
@@ -135,31 +137,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="pager">
 		<ul>
 			<li class="current">
-			<s:url id="first" value="index.action">
-				<s:param name="number" value="1"></s:param>
+			<s:url id="first" value="findByConditionList.action">
+				<s:param name="currPageNo" value="1"></s:param>
 			</s:url>
 			<s:a href="%{first}">首页</s:a>
 			<!-- <a href="/HouseRent/index.action?number=1">首页</a> --></li>
 			<li>
-			<s:url id="pre" value="index.action">
-				<s:param name="number" value="prev"></s:param>
+			<s:url id="pre" value="findByConditionList.action">
+				<s:param name="currPageNo" value="currPageNo - 1 < 1 ? 1:currPageNo - 1"></s:param>
 			</s:url>
 			<s:a href="%{pre}">上一页</s:a>
 			<%-- <a href='/HouseRent/index.action?number=<s:property value="prev"/>'>上一页</a> --%></li>
 			<li>
-			<s:url id="nex" value="index.action">
-				<s:param name="number" value="next"></s:param>
+			<s:url id="nex" value="findByConditionList.action">
+				<s:param name="currPageNo" value="currPageNo + 1 > page.totalPage ? page.totalPage:currPageNo + 1"></s:param>
 			</s:url>
 			<s:a href="%{nex}">下一页</s:a>
 			<%-- <a href='/HouseRent/index.action?number=<s:property value="next"/>'>下一页</a> --%></li>
 			<li>
-			<s:url id="last" value="index.action">
-				<s:param name="number" value="total"></s:param>
+			<s:url id="last" value="findByConditionList.action">
+				<s:param name="currPageNo" value="page.totalPage"></s:param>
 			</s:url>
 			<s:a href="%{last}">末页</s:a>
 			<%-- <a href='/HouseRent/index.action?number=<s:property value="total"/>'>末页</a> --%></li>
 		</ul>
-		<span class="total"><s:property value="number"/>/<s:property value="total"/>页</span>
+		<span class="total"><s:property value="currPageNo"/>/<s:property value="page.totalPage"/>页</span>
 	</div>
 </div>
 <div id="footer" class="wrap">

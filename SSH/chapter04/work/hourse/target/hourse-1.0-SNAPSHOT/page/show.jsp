@@ -4,6 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ include file="control.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -146,31 +147,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="view" class="main wrap">
 	<div class="intro">
 		<div class="lefter">
-			<h1><s:property value="title"/></h1>
-			<div class="subinfo"><s:property value="house.date"/></div>
+			<h1><s:property value="params.title"/></h1>
+			<div class="subinfo"><s:property value="params.pubdate"/></div>
 			<div class="houseinfo">
-				<p>户　　型：<span><s:property value="house.type.name"/></span></p>
-				<p>面　　积：<span><s:property value="house.floorage"/>m<sup>2</sup></span></p>				
-				<p>位　　置：<span><s:property value="house.street.district.name"/>区
-				<span><s:property value="house.street.name"/></span></p>
+				<p>户　　型：<span><s:property value="params.type.name"/></span></p>
+				<p>面　　积：<span><s:property value="params.floorage"/>m<sup>2</sup></span></p>
+				<p>位　　置：<span><s:property value="params.street.district.name"/>区
+				<span><s:property value="params.street.name"/></span></p>
 				
-				<p>联系方式：<span><s:property value="house.contact"/>
+				<p>联系方式：<span><s:property value="params.contact"/>
 				</span></p>
 			</div>
 		</div>
 		<div class="side">
 			<p><a href="#" class="bold">北京青鸟房地产经纪公司</a></p>
 			<p>资质证书：有</p>
-			<p>内部编号：<s:property value="house.user.id"/></p>
-			<p>联 系 人：<s:property value="house.user.username"/></p>
-			<p>联系电话：<span><s:property value="house.user.telephone"/></span></p>
+			<p>内部编号：<s:property value="params.users.id"/></p>
+			<p>联 系 人：<s:property value="params.users.username"/></p>
+			<p>联系电话：<span><s:property value="params.users.telephone"/></span></p>
 			<p>手机号码：<span>暂无</span></p>
 		</div>
 		<div class="clear"></div>
 		<div class="introduction">
 			<h2><span><strong>房源详细信息</strong></span></h2>
 			<div class="content">
-				<p><s:property value="house.description"/></p>
+				<p><s:property value="params.description"/></p>
 			</div>
 		</div>
 	</div>

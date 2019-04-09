@@ -27,12 +27,17 @@ public class House {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private Users users;
-    @Column(name = "TYPE_ID")
-    private Integer typeId;
+    @ManyToOne
+    @JoinColumn(name = "TYPE_ID")
+    private Type type;
     @ManyToOne
     @JoinColumn(name = "STREET_ID")
     private Street street;
-
+    //房屋位置
+    @Transient
+    private Integer postion;
+    @Column(name = "house_image")
+    private String house_image;
 
     public Integer getId() {
         return id;
@@ -98,12 +103,12 @@ public class House {
         this.users = users;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Type getType() {
+        return type;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public Street getStreet() {
@@ -114,19 +119,23 @@ public class House {
         this.street = street;
     }
 
-    @Override
-    public String toString() {
-        return "House{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", pubdate=" + pubdate +
-                ", floorage=" + floorage +
-                ", contact='" + contact + '\'' +
-                ", users=" + users +
-                ", typeId=" + typeId +
-                ", street=" + street +
-                '}';
+    public Integer getPostion() {
+        return postion;
     }
+
+    public void setPostion(Integer postion) {
+        this.postion = postion;
+    }
+
+    public String getHouse_image() {
+        return house_image;
+    }
+
+    public void setHouse_image(String house_image) {
+        this.house_image = house_image;
+    }
+
+    public House() {
+    }
+
 }

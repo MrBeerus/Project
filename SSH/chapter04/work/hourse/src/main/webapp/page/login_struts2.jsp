@@ -27,7 +27,7 @@
                     <table class="field">
 
                         <tr>
-                            <td colspan="2">${message}<s:fielderror/></td>
+                            <td colspan="2">${message}<%--<s:fielderror/>--%></td>
                         </tr>
                         <tr>
                             <td class="field">用 户 名：</td>
@@ -39,6 +39,13 @@
                         <tr>
                             <td class="field">密　　码：</td>
                             <td><input type="password" class="text" name="password"/>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field">日    期：</td>
+                            <td><input type="text" class="text" name="dateStg"/>
 
 
                             </td>

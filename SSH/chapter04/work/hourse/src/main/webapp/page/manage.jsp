@@ -42,14 +42,14 @@ int total = (Integer)request.getAttribute("total");
 		<tr>
 		
 			<td class="house-thumb"><span>
-				<s:url value="show.action" id="show">
+				<s:url value="showHouse.action" id="show">
 					<s:param name="id" value="id"></s:param>
 				</s:url>
 				<s:a href="%{show}"><img src="images/thumb_house.gif" /></s:a>
 			</span>	</td>
 			<td>
 				<dl>
-					<dt><s:url value="show.action" id="show">
+					<dt><s:url value="showHouse.action" id="show">
 					<s:param name="id" value="id"></s:param>
 				</s:url>
 				<s:a href="%{show}"><s:property value="title"/></s:a>
