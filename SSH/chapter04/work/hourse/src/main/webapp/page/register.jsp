@@ -31,7 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<table class="field">
 						<tr>
 							<td class="field">用 户 名：</td>
-							<td><input type="text" class="text" name="name" /> </td>
+							<td><input type="text" class="text" name="name" /> <span id="msg"></span></td>
+
 						</tr>
 						<tr>
 							<td class="field">密　　码：</td>
@@ -77,6 +78,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             alert('手机号码有误!');
             return false;
 		}
+    });
+    //验证是否存在
+    $("[name='name']").blur(function () {
+        var $name = $(this);
+		$.getJSON("checkNameUser",{name:$(this).val()},function (data) {
+			if(data.code == 10001){
+               $("#msg").html(data.message);
+			}
+        })
     });
 </script>
 </body>

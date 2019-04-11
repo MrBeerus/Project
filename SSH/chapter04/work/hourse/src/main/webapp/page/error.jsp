@@ -6,5 +6,6 @@
 </head>
 <body>
 出现错误:<s:fielderror/>
+action出现错误:<s:actionerror/>
 </body>
 </html>

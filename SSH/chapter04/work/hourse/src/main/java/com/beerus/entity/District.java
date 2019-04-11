@@ -1,5 +1,6 @@
 package com.beerus.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -9,7 +10,7 @@ public class District {
 
     private Integer id;
     private String name;
-    private Set<Street> datas;
+    private Set<Street> datas =new HashSet<Street>();
 
     public District() {
     }

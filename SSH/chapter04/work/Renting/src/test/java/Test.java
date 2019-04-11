@@ -55,4 +55,12 @@ public class Test {
     public void testDel(){
         userService.delete(new Users(1201));
     }
+
+    /**
+     * 测试脏检查
+     */
+    @org.junit.Test
+    public  void testAddData(){
+
+    }
 }

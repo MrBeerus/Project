@@ -27,6 +27,7 @@
         <global-results>
             <!--定义全局结果-->
             <result name="login">page/login_struts2.jsp</result>
+            <result name="input">page/error.jsp</result>
         </global-results>
         <action name="defaultAction">
             <!--默认跳到登录页面-->
@@ -52,6 +53,7 @@
         </action>
         <action name="*House" class="com.beerus.action.HouseAction" method="{1}_House">
             <result>page/{1}.jsp</result>
+            <result name="addHouse" type="redirectAction">uHouseList</result>
         </action>
         <!--查找对应用户下的房屋-->
         <action name="uHouseList" class="com.beerus.action.HouseAction" method="findByUserHouseList">

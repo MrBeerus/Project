@@ -20,7 +20,6 @@ public class OneAction extends ActionSupport {
     private String img_fileContentType;
     //上传的路径 由struts配置
     private String savePath;
-
     public String getSavePath() {
         return savePath;
     }

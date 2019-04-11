@@ -12,6 +12,9 @@
     <title>单个文件上传</title>
 </head>
 <body>
+<s:set name="cat" value="Tom"/>
+<s:property value="#cat"/>
+<s:debug/>
 <form action="one.action"  method="post" enctype="multipart/form-data">
     <input type="file" name="img_file"/>
     <input type="submit"/>

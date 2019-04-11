@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <!--配置链接参数-->
-        <property name="connection.url">jdbc:mysql://localhost:3306/Renting</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/Renting?characterEncoding=utf-8</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">12345678</property>

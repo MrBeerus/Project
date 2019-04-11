@@ -123,4 +123,8 @@ INSERT INTO `HOUSE` VALUES(DEFAULT,'海境界 户型方正 家私齐全，居家
 INSERT INTO `HOUSE` VALUES(DEFAULT,'精装修 一线看海 拎包入住 南北通透','本房源真实有效，业主诚心出租，房产为：156平米的大三房两厅两卫双阳台，主卧带洗手间，客厅出阳台看海景，景观超级漂亮，',7400,'2019-01-23',90,'王先生',1103,2204,4410);
 INSERT INTO `HOUSE` VALUES(DEFAULT,'房子面积大，采光好，离地铁站近','小区楼下就是11号线地铁碧海湾F出口，3个站到南山7个站福田，1个站到机场，距西乡地铁站400米，小区门口就是公交站，走宝安大道，西乡大道，107以及沿江高速出行很方便。',6900,'2019-01-24',82,'王先生',1103,2205,4401);
 
+
+ALTER TABLE `HOUSE` ADD COLUMN `house_image` VARCHAR(20) NULL;
+
+
 SELECT * FROM `HOUSE`;
