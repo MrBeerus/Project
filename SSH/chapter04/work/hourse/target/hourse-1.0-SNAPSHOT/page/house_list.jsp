@@ -50,10 +50,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<li>
 						<select name='params.price'>
-							<option value='0'>不限</option>
-							<option value='100'>100元以下</option>
-							<option value='200'>100元—200元</option>
-							<option value='201'>200元以上</option>
+							<option value='0' <s:if test="params.price == 0">selected="selected"</s:if>>不限</option>
+							<option value='100' <s:if test="params.price == 100">selected="selected"</s:if>>100元以下</option>
+							<option value='200' <s:if test="params.price == 200">selected="selected"</s:if>>100元—200元</option>
+							<option value='201' <s:if test="params.price == 201">selected="selected"</s:if>>200元以上</option>
 						</select>
 					</li>
 				</ul>
@@ -63,11 +63,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="first">房屋位置</li>
 					<li>
 							<select name='params.postion' id='street'>
-								<option value='0'>不限</option>
-								<option value='4401'>华强北街道</option>
-								<option value='4402'>深南中路</option>
-								<option value='4403'>福田街道</option>
-								<option value='4404'>沿河南路</option>
+								<option value='0' <s:if test="params.price == 0">selected="selected"</s:if>>不限</option>
+								<option value='4401' <s:if test="params.postion == 4401">selected="selected"</s:if>>华强北街道</option>
+								<option value='4402' <s:if test="params.postion == 4402">selected="selected"</s:if>>深南中路</option>
+								<option value='4403' <s:if test="params.postion == 4403">selected="selected"</s:if>>福田街道</option>
+								<option value='4404' <s:if test="params.postion == 4404">selected="selected"</s:if>>沿河南路</option>
 							</select>
 					</li>
 				</ul>

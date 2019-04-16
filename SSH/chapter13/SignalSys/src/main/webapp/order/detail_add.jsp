@@ -24,7 +24,8 @@
                 // document.forms[0].action = "doAddCustomer.action";
                 /*  document.forms[0].submit();*/
 
-                //凭借传输数据
+                var index = $("[value='" + $('#line_odlProductName').val() + "']").val();//保存数据
+                //拼接传输数据
                 var json = {
                     "line.odlProductName": $("[value='" + $('#line_odlProductName').val() + "']").text()
                     , "line.odlProductCount": $('[name="line.odlProductCount"]').val()
@@ -47,7 +48,6 @@
 
                     //遍历数据
                     $.each(data.saleOrderLines, function (i, o) {
-                        alert(o.odlProductName);
                         //找到数据
                         stg += '<tr> ';
                         stg += '<td class="data_cell">' + o.odlProductName + '</td> ';
@@ -63,14 +63,15 @@
                     $("#clear").siblings().remove();
                     $("#clear").before(stg);
 
-                    //清空
-                    $('[value="0"]').attr("selected", true);
-                    $('[name="line.odlProductCount"]').val(0);
-                    $('[name="total"]').val(0);
-                    $('[name="line.odlProductPrice"]').val(0);
+
 
                     if (data.code = 1001) {
-
+                        //清空
+                        $('[value="0"]').attr("selected", true);
+                        $('[name="line.odlProductCount"]').val(0);
+                        $('[name="total"]').val(0);
+                        $('[name="line.odlProductPrice"]').val(0);
+                        $('[value='+index+']').attr("selected", false);
                     } else {
                         alert("添加失败!");
                     }
@@ -82,6 +83,8 @@
 
         function setProdPrice(oSelect) {
             var text = oSelect.options[oSelect.selectedIndex].text;
+
+
             if (text == "请选择...") {
                 var oPrice = document.forms[0].elements["line.odlProductPrice"].value = "0";
                 var count = document.forms[0].elements["line.odlProductCount"].value = 0;

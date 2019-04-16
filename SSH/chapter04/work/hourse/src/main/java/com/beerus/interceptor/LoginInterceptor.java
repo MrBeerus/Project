@@ -23,7 +23,7 @@ public class LoginInterceptor extends AbstractInterceptor {
         //拿到登录对象
         Object user = actionInvocation.getInvocationContext().getSession().get("user");
         //判断是否登录
-        if (null != user || "login".equals(urlName.trim()) || "checkNameUser".equals(urlName.trim())) {
+        if (null != user || "login".equals(urlName.trim()) || "checkNameUser".equals(urlName.trim()) || "registerUser".equals(urlName)) {
             //继续执行拦截器或Action
             return actionInvocation.invoke();
         }

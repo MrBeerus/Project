@@ -35,18 +35,25 @@
         </action>
         <action name="login" class="com.beerus.action.UserAction" method="login_User">
             <!--上机三效果-->
-           <!-- <result name="success" type="redirectAction">findAllList</result>-->
+         <!-- <result name="success" type="redirectAction">findAllList</result>-->
             <!--上机五效果-->
-             <result name="success" type="redirectAction">uHouseList</result>
+            <result name="success" type="redirectAction">uHouseList</result>
            <!-- <result name="login">page/login_struts2.jsp</result>
             <result name="input">page/error.jsp</result>-->
         </action>
+
+
+
         <!--用户通配控制-->
         <action name="*User" class="com.beerus.action.UserAction" method="{1}_User">
             <result name="success" type="redirect">page/{1}_success.jsp</result>
             <result name="error">register.jsp</result>
             <result name="input">page/register.jsp</result>
         </action>
+
+
+
+
         <!--查找房屋-->
         <action name="*List" class="com.beerus.action.HouseAction" method="{1}_List">
             <result>page/house_list.jsp</result>

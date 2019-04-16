@@ -93,12 +93,6 @@ public class OrderAction extends ActionSupport {
             saleOrder.getSaleOrderLines().add(line);
             //输出是否添加成功
             Result<SaleOrderLine> result = new Result(1001, "success");
-           /* //添加数据 解决懒加载
-            Set<SaleOrderLine> orderLines = new HashSet<SaleOrderLine>();
-            for (SaleOrderLine s : saleOrder.getSaleOrderLines()) {
-                System.out.println(s.getOdlProductName());
-                orderLines.add(s);
-            }*/
             //输出数据
             result.setSaleOrderLines(saleOrder.getSaleOrderLines());
             HibernateUtils.getSession().flush();

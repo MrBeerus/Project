@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dd class="past">填写个人信息</dd>
 		</dl>
 		<div class="box">
-			<form action="registerUser.action?option=register" method="post">
+			<form action="registerUser.action" method="post">
 				<div style="color: pink"><s:fielderror/></div>
 				<div class="infos">
 					<table class="field">
@@ -85,6 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.getJSON("checkNameUser",{name:$(this).val()},function (data) {
 			if(data.code == 10001){
                $("#msg").html(data.message);
+			}else{
+                $("#msg").html("");
 			}
         })
     });
