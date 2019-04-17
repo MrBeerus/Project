@@ -13,6 +13,6 @@ import com.beerus.utils.HibernateUtils;
 public class SysEmployeeDaoImpl implements SysEmployeeDao {
     public Object getEmp(SysEmployee employee) {
         return HibernateUtils.getSession().createQuery(
-                "FROM SysEmployee WHERE sn = :sn AND password = :password").setProperties(employee).uniqueResult();
+                "FROM SysEmployee WHERE sn = :sn AND password = :password AND status='在职' ").setProperties(employee).uniqueResult();
     }
 }

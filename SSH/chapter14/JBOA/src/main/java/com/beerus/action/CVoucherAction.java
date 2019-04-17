@@ -259,7 +259,7 @@ public class CVoucherAction extends ActionSupport {
                 && !"财务".equals(employee.getPosition().getNameCn())) {
             voucher.setStatus("待审批");
             //判断是否是第二次提交 也就是总经理审核通过交给财务处理
-            if ("通过".equals(checkResult.getResult())) {
+            if ("通过".equals(checkResult.getResult()) && voucher.getTotalAccount() < 5000 || "总经理".equals(employee.getPosition().getNameCn())) {
                 voucher.setNextDealSn(new SysEmployee("002"));
             } else {
                 voucher.setNextDealSn(new SysEmployee("004"));
@@ -274,6 +274,7 @@ public class CVoucherAction extends ActionSupport {
                 voucher.setNextDealSn(new SysEmployee("002"));
             } else if ("拒绝".equals(checkResult.getResult())) {
                 voucher.setStatus("已终止");
+                voucher.setNextDealSn(null);
             } else if ("打回".equals(checkResult.getResult())) {
                 voucher.setStatus("已打回");
                 voucher.setNextDealSn(voucher.getCreateSn());
