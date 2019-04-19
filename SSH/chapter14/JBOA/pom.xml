@@ -45,7 +45,7 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-    <!--Sttuts2-->
+    <!--Struts2-->
     <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core -->
     <dependency>
       <groupId>org.apache.struts</groupId>

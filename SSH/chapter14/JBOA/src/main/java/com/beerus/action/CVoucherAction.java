@@ -303,6 +303,7 @@ public class CVoucherAction extends ActionSupport {
             //临时保存数据
             String status = voucher.getStatus().trim();
             String event = voucher.getEvent().trim();
+            int totalPrice = voucher.getTotalAccount();
             SysEmployee employee = (SysEmployee) ServletActionContext.getRequest().getSession().getAttribute("emp");
             //查找订单 转化为持久态对象
             voucher = cVoucherService.getVoucher(voucher.getId());
@@ -314,6 +315,7 @@ public class CVoucherAction extends ActionSupport {
                 voucher.setNextDealSn(new SysEmployee("003"));
             }
             voucher.setEvent(event);
+            voucher.setTotalAccount(totalPrice);
             //遍历详情集合 设置双方关联
             for (BizClaimVoucherDetall detall : detailList) {
                 //判断是否是和原来的对象一样 防止重复添加报错
